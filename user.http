@@ -1,0 +1,43 @@
+@baseUrl = http://localhost:5000
+
+###########
+# Get users
+GET {{baseUrl}}/users
+Accept: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NjljNjcyMzk1YTkyNDk5OGQ0MTNlYiIsInVzZXJuYW1lIjoidGVzdDIiLCJlbWFpbCI6InRlc3QyQGVtaWFsLmNvbSIsImlhdCI6MTcxODIwODEyNSwiZXhwIjoxNzE4MjExNzI1fQ.pxn8EughbvcQ8r23iZXOf-98lFD3OGtzEKovKOJxrrU
+
+###########
+# Login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+Accept: application/json
+
+{
+  "email": "test2@emial.com",
+  "password": "pass1234"
+}
+
+###########
+# Register new user
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username": "test",
+  "email": "test@emial.com",
+  "password": "pass1234"
+}
+
+###########
+# Register new user with roles
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username": "test2",
+  "email": "test2@emial.com",
+  "password": "pass1234",
+  "roles": ["admin"]
+}
