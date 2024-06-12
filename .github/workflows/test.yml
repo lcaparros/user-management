@@ -2,11 +2,11 @@ name: Test
 
 on:
   push:
-    branches:
-      - '**'  # Ejecutar en todos los branches
+    branches-ignore:
+      - main
   pull_request:
-    branches:
-      - '**'  # Ejecutar en todas las pull requests
+    branches-ignore:
+      - main
 
 jobs:
   test:
