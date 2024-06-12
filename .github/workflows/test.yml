@@ -3,11 +3,29 @@ name: Test
 on:
   push:
     branches:
-      - '**'
+      - '**'  # Ejecutar en todos los branches
+  pull_request:
+    branches:
+      - '**'  # Ejecutar en todas las pull requests
 
 jobs:
   test:
     runs-on: ubuntu-latest
+
+    services:
+      mongodb:
+        image: mongo:latest
+        ports:
+          - 27017:27017
+        options: >-
+          --health-cmd "mongo --eval 'db.runCommand({ ping: 1 })'"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      MONGODB_URI: mongodb://localhost:27017/testdb
+      JWT_SECRET: your_secret_key
 
     steps:
       - name: Checkout repository
@@ -17,6 +35,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '22'
+
+      - name: Wait for MongoDB to be ready
+        run: |
+          until mongo --eval 'db.runCommand({ ping: 1 })' --quiet; do
+            echo "Waiting for MongoDB to be ready..."
+            sleep 2
+          done
 
       - name: Install dependencies
         run: npm install
