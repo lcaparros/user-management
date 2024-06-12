@@ -1,7 +1,7 @@
 {
   "name": "user-management",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is a JS module for adding basic user management to your ExpressJS project",
   "type": "module",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,21 @@
     "test:watch": "npm run test -- --watch",
     "test:log:watch": "npm run test:log -- --watch"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lcaparros/user-management.git"
+  },
+  "keywords": [
+    "user-management",
+    "credentials",
+    "authentication"
+  ],
+  "author": "lcaparros",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lcaparros/user-management/issues"
+  },
+  "homepage": "https://github.com/lcaparros/user-management#readme",
   "dependencies": {
     "bcryptjs": "2.4.3",
     "express": "4.19.2",
